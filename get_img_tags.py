@@ -1,10 +1,9 @@
 from selenium import webdriver
 
-driver = webdriver.Chrome(executable_path='./driver/chromedriver')
-
 url = input("URL: ")
 
 if url:
+    driver = webdriver.Chrome(executable_path='./driver/chromedriver')
     driver.get(url)
 
     img_tags = driver.find_elements_by_xpath('//img')
