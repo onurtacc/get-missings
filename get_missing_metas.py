@@ -17,7 +17,15 @@ if url:
     metas = driver.find_elements_by_xpath('//meta')
 
     for meta in metas:
-        exist_metas.append(meta.get_attribute('name'))
+        meta_name = meta.get_attribute('name')
+        meta_property = meta.get_attribute('property')
+        meta_itemprop = meta.get_attribute('itemprop')
+        if meta_name:
+            exist_metas.append(meta_name)
+        elif meta_property:
+            exist_metas.append(meta_property)
+        elif meta_itemprop:
+            exist_metas.append(meta_itemprop)
 
     for m in expected_metas:
         if m not in exist_metas:
